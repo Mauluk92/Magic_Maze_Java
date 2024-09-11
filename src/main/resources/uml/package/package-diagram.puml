@@ -1,0 +1,48 @@
+@startuml
+
+package "Unveiling" << presentation >> {
+    package "Wanderer" << presentation >> {
+    }
+}
+
+package "Genesis" << business >> {
+
+    package "Abyss" << business >> {
+    }
+    package "Weaver" << business >> {
+    }
+    package "Music" << business >> {
+    }
+    package "Fate" << business >> {
+    }
+    package "LabyrinthScore" << business >> {
+    }
+}
+
+package "Fabric" << model >> {
+    package "Essence" << model >>{
+    }
+    package "Link" << model >> {
+    }
+    package "Monad" << model >> {
+    }
+    package "Note" << model >> {
+    }
+    package "Sigill" << model >> {
+    }
+    package "Verb" << model >> {
+    }
+    package "Spell" << model >> {
+    }
+
+
+}
+
+package "Observer" << business >> {
+    package Xaqatala << business >> {
+    }
+}
+"Genesis" ---> "Fabric" : Depends On
+"Wanderer" ---> "Fabric" : Depends On
+"Observer" ---> "Fabric" : Depends On
+@enduml
