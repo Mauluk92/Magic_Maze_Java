@@ -1,9 +1,18 @@
 @startuml
 
+/'
+    This package represents the UI of application
+'/
+
 package "Unveiling" << presentation >> {
     package "Wanderer" << presentation >> {
     }
 }
+
+/'
+    This package represents the business rules for
+    the application
+'/
 
 package "Genesis" << business >> {
 
@@ -18,6 +27,11 @@ package "Genesis" << business >> {
     package "LabyrinthScore" << business >> {
     }
 }
+
+/'
+    Modeling entities representing the structure
+    of the labyrinth
+'/
 
 package "Fabric" << model >> {
     package "Essence" << model >>{
@@ -34,14 +48,18 @@ package "Fabric" << model >> {
     }
     package "Spell" << model >> {
     }
-
-
 }
+
+/'
+    Observer package which contains
+    the labyrinth
+'/
 
 package "Observer" << business >> {
     package Xaqatala << business >> {
     }
 }
+
 "Genesis" ---> "Fabric" : Depends On
 "Wanderer" ---> "Fabric" : Depends On
 "Observer" ---> "Fabric" : Depends On
