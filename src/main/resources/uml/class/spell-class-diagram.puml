@@ -1,0 +1,80 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Spell {
+    + {abstract} trace() : bool
+}
+
+interface SpellSpool {
+    + {abstract} legato(otherSpell : Spell) : Spell
+    + {abstract} staccato(otherSpell : Spell) : Spell
+    + {abstract} bequadro() : Spell
+    + {abstract} rest(sigill : Sigill, verb: Verb) : Spell
+    + {abstract} tune(verb : Verb, sigill : Sigill) : Spell
+}
+
+abstract class AbstractSpell {
+    + {abstract} legato(otherSpell : Spell) : AbstractSpell
+    + {abstract} staccato(otherSpell : Spell) : AbstractSpell
+    + {abstract} bequadro() : AbstractSpell
+    + {abstract} rest(sigill : Sigill, verb: Verb) : AbstractSpell
+    + {abstract} tune(verb : Verb, sigill : Sigill) : AbstractSpell
+}
+
+abstract class SimpleSpell {
+    - spell : Spell {readonly}
+    + SimpleSpell(spell :Spell)
+    + getSpell() : Spell
+}
+
+abstract class CompositeSpell {
+    - spells : List<Spell> {readonly}
+    + CompositeSpell(spells : List<Spell>)
+    + getSpells() : List<Spell>
+}
+
+class Bequadro
+class Legato
+class Staccato
+class Word
+class Rest
+
+AbstractSpell ..|> Spell
+AbstractSpell ..|> SpellSpool
+AbstractSpell <|-- SimpleSpell
+AbstractSpell <|-- CompositeSpell
+
+SimpleSpell <|-- Bequadro
+AbstractSpell <|-- Word
+AbstractSpell <|-- Rest
+CompositeSpell <|-- Legato
+CompositeSpell <|-- Staccato
+
+enum Sigill {
+    A,
+    B
+}
+
+note left of Sigill
+    represents a single
+    atomic proposition
+end note
+
+enum Verb {
+    NE,
+    QY
+    -value: String {readonly}
+    +Verb(value: String)
+    +toString(): String
+}
+
+note right of Verb::toString
+    overrides the corresponding
+    Object method in order to store
+    a string representation of the
+    Verb
+end note
+
+
+
+@enduml

@@ -7,7 +7,7 @@ import it.mauluk92.spell.Spell;
 
 public class EnchantedMirror implements Link<Note> {
 
-    private Observer qalasaSight;
+    private Observer xaqatalaSight;
     private Spell essence;
     private Note note;
     public Note revealEssence() { return this.note;}
@@ -18,13 +18,13 @@ public class EnchantedMirror implements Link<Note> {
 
     @Override
     public void attach(Observer observer, Note note) {
-        this.qalasaSight = observer;
+        this.xaqatalaSight = observer;
         this.note = note;
     }
 
     @Override
     public void propagate() {
-        qalasaSight.mutate(this);
+        xaqatalaSight.mutate(this);
     }
 
     @Override

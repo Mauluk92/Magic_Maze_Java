@@ -1,0 +1,31 @@
+@startuml
+
+interface Abyss<T> << service >>  {
+    + {abstract}roar(): Set<T>
+}
+
+note right of Abyss
+    represents the bottomless chaotic void
+end note
+
+class ManyVoiceFromTheAbyss << service >> {
+    - {static} MANY_VOICE: ManyVoiceFromTheAbyss
+    - monadCacophony: MonadCacophony {readonly}
+}
+
+note left of ManyVoiceFromTheAbyss
+    Many Voice From The Abyss,
+    the primordial
+    roaring chaos dragon
+end note
+
+
+class MonadCacophony << service >> {
+
+}
+
+MonadCacophony ..|> Abyss
+note on link
+    implements Abyss<XaqatalaPearl<EnchantedMirror>>
+end note
+@enduml

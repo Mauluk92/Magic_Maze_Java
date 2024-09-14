@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Monad<T> << service >>  {
+    - essence: T
+    + Monad()
+    + Monad(essence: T)
+    + endowEssence(essence: T)
+    + revealEssence() : T
+}
+
+interface Link<N extends Enum<?>> {
+    attach(observer: Observer, N note): void
+    propagate(): void
+}
+
+class EnchantedMirror {
+    - xaqatalaSight : Observer
+    - essence: Spell
+    - note : Note
+
+    + revealSpell(): Spell
+    + enchantMirror(spell: Spell): void
+}
+
+class XaqatalaPearl<T extends Link<? extends Enum<?>>> {
+    - xaqatalàWord: Word
+    + toString(): String
+}
+
+Monad <|-- XaqatalaPearl
+
+EnchantedMirror ..|> Link
+note on link
+    implements Link<Note>
+end note
+@enduml
